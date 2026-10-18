@@ -1,0 +1,99 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agents": {
+    "discovery": {
+      "description": "每日 A 股 + 港股候选发现，产出带认知距离标注的报告",
+      "mode": "all",
+      "system": "{file:./AGENT.md}",
+      "permissions": [
+        {
+          "action": "shell",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "subagent",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "edit",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "edit",
+          "resource": "reports/**",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "seen.md",
+          "effect": "allow"
+        }
+      ]
+    },
+    "setup": {
+      "description": "首次使用访谈：生成 profile.md、选定模型、设置定时任务的时间与频率",
+      "mode": "primary",
+      "system": "{file:./SETUP_AGENT.md}",
+      "permissions": [
+        {
+          "action": "shell",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "opencode models*",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "opencode auth list*",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "scripts/install-schedule.sh*",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "bash scripts/install-schedule.sh*",
+          "effect": "allow"
+        },
+        {
+          "action": "subagent",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "webfetch",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "websearch",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "edit",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "edit",
+          "resource": "profile.md",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": ".opencode/opencode.json",
+          "effect": "allow"
+        }
+      ]
+    }
+  }
+}

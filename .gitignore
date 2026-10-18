@@ -1,0 +1,12 @@
+.DS_Store
+*.log
+.env
+__pycache__/
+*.pyc
+# 运行日志与锁
+/logs/
+# 看板为生成产物，不入库
+/dashboard.html
+/profile.md
+# 你的模型选择（/setup 写入；每台机器不同，不入库）
+/.opencode/opencode.json
